@@ -1,5 +1,7 @@
 'use strict';
 
+require('dotenv').config();
+
 const assert = require('assert');
 const fs = require('fs-extra');
 const { join } = require('path');
@@ -1008,7 +1010,7 @@ const Instauto = async (db, browser, options) => {
 
   await setEnglishLang(false);
 
-  await tryPressButton(await page.$x('//button[contains(text(), "Accept")]'), 'Accept cookies dialog');
+  await tryPressButton(await page.$x('//button[contains(text(), "Allow")]'), 'Accept cookies dialog');
   await tryPressButton(await page.$x('//button[contains(text(), "Only allow essential cookies")]'), 'Accept cookies dialog 2 button 1', 10000);
   await tryPressButton(await page.$x('//button[contains(text(), "Allow essential and optional cookies")]'), 'Accept cookies dialog 2 button 2', 10000);
 
