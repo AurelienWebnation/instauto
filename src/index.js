@@ -1,12 +1,11 @@
 'use strict';
 
-require('dotenv').config();
-
-const assert = require('assert');
-const fs = require('fs-extra');
-const { join } = require('path');
-const UserAgent = require('user-agents');
-const JSONDB = require('./db');
+import 'dotenv/config';
+import assert from 'assert';
+import fs from 'fs-extra';
+import { join } from 'path';
+import UserAgent from 'user-agents';
+import { JSONDB } from './db.js';
 
 // NOTE duplicated inside puppeteer page
 function shuffleArray(arrayIn) {
@@ -32,7 +31,7 @@ const botWorkShiftHours = 16;
 const dayMs = 24 * 60 * 60 * 1000;
 const hourMs = 60 * 60 * 1000;
 
-const Instauto = async (db, browser, options) => {
+export const Instauto = async (db, browser, options) => {
   const {
     instagramBaseUrl = 'https://www.instagram.com',
     cookiesPath,
@@ -1215,5 +1214,3 @@ const Instauto = async (db, browser, options) => {
 };
 
 Instauto.JSONDB = JSONDB;
-
-module.exports = Instauto;

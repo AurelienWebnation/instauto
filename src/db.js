@@ -1,9 +1,9 @@
 'use strict';
 
-const fs = require('fs-extra');
-const keyBy = require('lodash/keyBy');
+import fs from 'fs-extra';
+import { keyBy } from "lodash-es";
 
-module.exports = async ({
+export const JSONDB = async ({
   followedDbPath,
   unfollowedDbPath,
   likedPhotosDbPath,

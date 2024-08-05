@@ -1,7 +1,11 @@
 node_modules
-cookies.json
-followed.json
-following.json
 run.js
 .idea
 .env
+
+# Files generated and used by instauto
+liked-photos.json
+unfollowed.json
+cookies.json
+followed.json
+following.json
