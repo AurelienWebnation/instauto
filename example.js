@@ -80,19 +80,21 @@ const options = {
 (async () => {
   let browser;
 
+  const puppeteerOptions = {
+    headless: true,
+    args: [
+      // Needed for docker
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+    ],
+  }
+
+  if (process.env.PROXY_SERVER) {
+    puppeteerOptions.args.push(`--proxy-server=${process.env.PROXY_SERVER}`);
+  }
+
   try {
-    browser = await puppeteer.launch({
-      headless: true,
-
-      args: [
-        // Needed for docker
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-
-        // If you need to proxy: (see also https://www.chromium.org/developers/design-documents/network-settings)
-        // '--proxy-server=127.0.0.1:9876',
-      ],
-    });
+    browser = await puppeteer.launch(puppeteerOptions);
 
     /*
       Create a database where state will be loaded/saved to
